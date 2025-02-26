@@ -1,0 +1,91 @@
+{% include 'includes/header.html' %}
+<style>
+    .news-container {
+        max-width: 1200px; /* Ensures a consistent width */
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .article {
+        margin-bottom: 20px;
+        padding: 15px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        min-height: 250px; /* Ensures equal card heights */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .article h2 {
+        font-size: 16px;
+        margin: 0 0 10px;
+    }
+    .article p {
+        color: #555;
+        font-size: 14px;
+        flex-grow: 1;
+    }
+    .article a {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+    }
+    .article a:hover {
+        text-decoration: underline;
+    }
+    .pagination {
+        display: flex;
+        justify-content: center; /* Centers pagination */
+        margin-top: 20px;
+    }
+    .pagination a {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+        margin: 0 10px;
+    }
+</style>
+
+{% include 'includes/navbar.html' %}
+
+<div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 60px;">
+    <div class="row py-5">
+        <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+            <h1 class="display-4 text-white animated zoomIn">News</h1>
+        </div>
+    </div>
+</div>
+
+<!-- News Section -->
+<div class="container news-container">
+    {% if articles %}
+        <div class="row">
+            {% for article in articles %}
+                <div class="col-md-4 d-flex">
+                    <div class="article w-100">
+                        <h2>{{ article.title }}</h2>
+                        <p>{{ article.description }}</p>
+                        <a href="{{ article.url }}" target="_blank">Read more</a>
+                    </div>
+                </div>
+                {% if loop.index % 3 == 0 %} 
+                    </div><div class="row"> <!-- Ensures 3 articles per row -->
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center">No articles found.</p>
+    {% endif %}
+
+    <!-- Pagination Links -->
+    <div class="pagination">
+        {% if has_previous %}
+            <a href="{{ url_for('news', page=page - 1) }}">Previous</a>
+        {% endif %}
+        {% if has_next %}
+            <a href="{{ url_for('news', page=page + 1) }}">Next</a>
+        {% endif %}
+    </div>
+</div>
+
+{% include 'includes/footer.html' %}

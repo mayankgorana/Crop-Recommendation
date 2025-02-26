@@ -1,0 +1,137 @@
+{% include 'includes/header.html' %}
+<style>
+      .blog-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            height: 400px; /* Fixed height for uniform card size */
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card img {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .blog-card h4 {
+            font-size: 18px; /* Reduced title size */
+        }
+        .blog-card p {
+            font-size: 12px; /* Reduced text size */
+            flex-grow: 1; /* Ensures description takes available space */
+        }
+        .blog-card .btn {
+            font-size: 12px; /* Reduced button text size */
+            margin-top: auto; /* Pushes button to the bottom */
+        }
+        
+        /* Pagination Styles */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination .btn {
+            background-color: rgb(56, 136, 27);
+            color: white;
+            border: none;
+        }
+
+        .pagination .btn:hover {
+            background-color: rgb(40, 102, 21);
+            color: white;
+        }
+
+        .pagination .btn:focus {
+            box-shadow: none;
+        }
+
+        .pagination .btn.disabled, .pagination .btn.disabled:hover {
+            background-color: #ddd;
+            color: #777;
+        }
+
+        /* Highlight active page */
+        .pagination .active-btn {
+            background-color: rgb(40, 102, 21);
+            color: white;
+            font-weight: bold;
+        }
+</style>
+
+</head>
+
+<body>
+
+
+    {% include 'includes/navbar.html' %}
+
+        <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 60px;">
+            <div class="row py-5">
+                <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+                    <h1 class="display-4 text-white animated zoomIn">BLOGS</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Full Screen Search Start -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content" style="background: rgba(9, 30, 62, .7);">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex align-items-center justify-content-center">
+                    <div class="input-group" style="max-width: 600px;">
+                        <input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">
+                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Full Screen Search End -->
+
+
+    <!-- Blog Start -->
+        <div class="container py-3">
+
+            <div class="row">
+                {% for blog in blogs %}
+                    <div class="col-md-4 mb-4">
+                        <div class="blog-card">
+                            <img src="{{ blog.image }}" alt="{{ blog.title }}">
+                            <h4 class="mt-3">{{ blog.title }}</h4>
+                            <p><strong>Author:</strong> {{ blog.author }} | <strong>Date:</strong> {{ blog.date }}</p>
+                            <p>{{ blog.excerpt }}</p>
+                            <a href="{{ blog.link }}" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+    
+            <!-- Pagination Controls -->
+            <div class="pagination">
+                {% if has_previous %}
+                    <a href="{{ url_for('blog', page=page-1) }}" class="btn mx-2">Previous</a>
+                {% endif %}
+                <!-- Active page button -->
+                <span class="btn btn-light active-btn">Page {{ page }}</span>
+                {% if has_next %}
+                    <a href="{{ url_for('blog', page=page+1) }}" class="btn mx-2">Next</a>
+                {% endif %}
+            </div>
+        </div>
+    <!-- Blog End -->
+    
+    
+
+    
+
+    {% include 'includes/footer.html' %}
