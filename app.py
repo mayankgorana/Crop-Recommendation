@@ -30,7 +30,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Contact Us Configuration
-app.config["MONGO_URI"] = "mongodb://localhost:27017/contact_form"
+app.config["MONGO_URI"] = "mongodb://localhost:27017/crop_database"
 mongo = PyMongo(app)
 
 @app.route('/submit', methods=['POST'])
@@ -44,7 +44,7 @@ def submit_form():
             return jsonify({"error": "All fields are required"}), 400
 
         # Insert into MongoDB
-        mongo.db.contacts.insert_one(data)
+        mongo.db.contact_data.insert_one(data)
 
         return jsonify({"message": "Form submitted successfully!"}), 201
 
