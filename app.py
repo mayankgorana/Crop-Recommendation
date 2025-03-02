@@ -65,19 +65,17 @@ def about():
     return render_template("about.html")
 
 
-
-
 @app.route('/blog')
 def blog():
     page = request.args.get("page", 1, type=int)  # Get page number, default is 1
     per_page = 6  # Show 6 blogs per page
 
-    start = (page - 1) * per_page
-    end = start + per_page
-    paginated_blogs = blogs[start:end]
+    blog_collection = mongo.db.blogs
+    total_blogs = blog_collection.count_documents({})
+    paginated_blogs = list(blog_collection.find().skip((page - 1) * per_page).limit(per_page))
 
-    has_next = end < len(blogs)
-    has_previous = start > 0
+    has_next = (page * per_page) < total_blogs
+    has_previous = page > 1
 
     return render_template("blog.html", blogs=paginated_blogs, page=page, has_next=has_next, has_previous=has_previous)
 
