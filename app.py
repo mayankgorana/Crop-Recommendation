@@ -281,13 +281,13 @@ def help():
 # Prediction
 @app.route("/predict", methods=['POST'])
 def predict():
-    N = float(request.form['Nitrogen'])
-    P = float(request.form['Phosphorus'])
-    K = float(request.form['Potassium'])
-    temp = float(request.form['Temperature'])
-    humidity = float(request.form['Humidity'])
-    ph = float(request.form['pH'])
-    rainfall = float(request.form['Rainfall'])
+    N = float(request.form.get('Nitrogen', 0))
+    P = float(request.form.get('Phosphorus', 0))
+    K = float(request.form.get('Potassium', 0))
+    temp = float(request.form.get('Temperature', 0))
+    humidity = float(request.form.get('Humidity', 0))
+    ph = float(request.form.get('pH', 0))
+    rainfall = float(request.form.get('Rainfall', 0))
 
     feature_list = [N, P, K, temp, humidity, ph, rainfall]
     prediction = model.predict([feature_list])

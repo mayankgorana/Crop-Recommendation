@@ -95,7 +95,7 @@
                     <div class="text-center">
                         {% if result %}
                         <h5 class="mb-3">Recommended Crop for Cultivation:</h5>
-                        <img src="{{ image_url }}" alt="{{ result }}" class="img-fluid" style="max-width: 100%; max-height: 300px; border-radius: 10px;">
+                        <img src="{{ image_url }}" alt="{{ result }}" class="img-fluid" style="width: 500px; max-height: 300px; border-radius: 10px;">
                         <p class="fw-bold text-uppercase mt-2">{{ result }}</p>
                         {% else %}
                         <img src="https://images.pexels.com/photos/30733226/pexels-photo-30733226/free-photo-of-traditional-tobacco-farming-in-east-java-indonesia.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Crop Image" class="img-fluid" style="max-width: 100%; max-height: 300px; border-radius: 10px;">
@@ -110,42 +110,42 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="Nitrogen">Nitrogen</label>
-                                <input type="number" id="Nitrogen" name="Nitrogen" placeholder="Enter Nitrogen" class="form-control" required>
+                                <input type="number" id="Nitrogen" name="Nitrogen" placeholder="Enter Nitrogen" class="form-control" step="any" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="Phosphorus">Phosphorus</label>
-                                <input type="number" id="Phosphorus" name="Phosphorus" placeholder="Enter Phosphorus" class="form-control" required>
+                                <input type="number" id="Phosphorus" name="Phosphorus" placeholder="Enter Phosphorus" class="form-control" step="any" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="Potassium">Potassium</label>
-                                <input type="number" id="Potassium" name="Potassium" placeholder="Enter Potassium" class="form-control" required>
+                                <input type="number" id="Potassium" name="Potassium" placeholder="Enter Potassium" class="form-control" step="any" required>
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-4">
                                 <label for="Temperature">Temperature (°C)</label>
-                                <input type="number" id="Temperature" name="Temperature" placeholder="Enter Temperature" class="form-control" required>
+                                <input type="number" id="Temperature" name="Temperature" placeholder="Enter Temperature" class="form-control" step="any" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="Humidity">Humidity (%)</label>
-                                <input type="number" id="Humidity" name="Humidity" placeholder="Enter Humidity" class="form-control" required>
+                                <input type="number" id="Humidity" name="Humidity" placeholder="Enter Humidity" class="form-control" step="any" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="pH">pH</label>
-                                <input type="number" id="pH" name="pH" placeholder="Enter pH" class="form-control" required>
+                                <input type="number" id="pH" name="pH" placeholder="Enter pH" class="form-control" step="any" required>
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-6">
                                 <label for="Rainfall">Rainfall (mm)</label>
-                                <input type="number" id="Rainfall" name="Rainfall" placeholder="Enter Rainfall" class="form-control" required>
+                                <input type="number" id="Rainfall" name="Rainfall" placeholder="Enter Rainfall" class="form-control" step="any" required>
                             </div>
                         </div>
                         <div class="row mt-4">
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-primary btn-lg">Get Recommendation</button>
                             </div>
-                        </div>
+                        </div>                        
                     </form>
                 </div>
             </div>
