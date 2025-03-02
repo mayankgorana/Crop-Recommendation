@@ -56,30 +56,30 @@ def submit_form():
 API_KEY = os.getenv("NEWS_API_KEY")
 BASE_URL = os.getenv("BASE_URL", "https://newsapi.org/v2/everything")
 
-crop_images = {
-    'rice': 'https://images.pexels.com/photos/96417/pexels-photo-96417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    'maize': 'https://images.pexels.com/photos/872483/pexels-photo-872483.jpeg?auto=compress&cs=tinysrgb&w=600',
-    'jute': 'https://images.pexels.com/photos/17362930/pexels-photo-17362930/free-photo-of-green-tall-plants-on-field.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    'cotton': ' https://images.pexels.com/photos/8730509/pexels-photo-8730509.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    'coconut': ' https://images.pexels.com/photos/27497946/pexels-photo-27497946/free-photo-of-a-coconut-tree-with-green-fruit-on-it.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    'papaya': ' https://images.pexels.com/photos/15556727/pexels-photo-15556727/free-photo-of-green-papaya-fruits-hanging-on-tree.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    'orange': ' https://images.pexels.com/photos/2171374/pexels-photo-2171374.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    'apple': ' https://images.pexels.com/photos/2821819/pexels-photo-2821819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    'muskmelon': 'https://images.pexels.com/photos/28454829/pexels-photo-28454829/free-photo-of-pile-of-fresh-striped-melons-at-market.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    'watermelon': 'https://images.pexels.com/photos/12746880/pexels-photo-12746880.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    'grapes': 'https://images.pexels.com/photos/225229/pexels-photo-225229.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    'mango': 'https://images.pexels.com/photos/16003687/pexels-photo-16003687/free-photo-of-fruit-on-tree.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    'banana': 'https://images.pexels.com/photos/6141487/pexels-photo-6141487.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    'pomegranate': 'https://images.pexels.com/photos/5320089/pexels-photo-5320089.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    'lentil': 'https://cdn.britannica.com/14/157214-050-3A82D9CD/kinds-lentils.jpg',
-    'blackgram': 'https://agribee.in/wp-content/uploads/2020/01/blackgram.jpg',
-    'mungbean': 'https://images.pexels.com/photos/7334141/pexels-photo-7334141.jpeg?auto=compress&cs=tinysrgb&w=600',
-    'mothbeans': 'https://ooofarms.com/cdn/shop/products/MothBean1_whole.jpg?v=1672251298&width=3840',
-    'pigeonpeas': 'https://gardenerspath.com/wp-content/uploads/2022/02/How-to-Grow-Pigeon-Peas-Feature.jpg',
-    'kidneybeans': 'https://images-prod.healthline.com/hlcmsresource/images/AN_images/kidney-beans-1296x728-feature.jpg',
-    'chickpea': 'https://img.feedstrategy.com/files/base/wattglobalmedia/all/image/2023/10/chickpeas.652d6f3ea08b0.png?auto=format%2Ccompress&q=70&w=880',
-    'coffee': 'https://images.pexels.com/photos/2131720/pexels-photo-2131720.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-}
+# crop_images = {
+#     'rice': 'https://images.pexels.com/photos/96417/pexels-photo-96417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+#     'maize': 'https://images.pexels.com/photos/872483/pexels-photo-872483.jpeg?auto=compress&cs=tinysrgb&w=600',
+#     'jute': 'https://images.pexels.com/photos/17362930/pexels-photo-17362930/free-photo-of-green-tall-plants-on-field.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+#     'cotton': ' https://images.pexels.com/photos/8730509/pexels-photo-8730509.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+#     'coconut': ' https://images.pexels.com/photos/27497946/pexels-photo-27497946/free-photo-of-a-coconut-tree-with-green-fruit-on-it.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+#     'papaya': ' https://images.pexels.com/photos/15556727/pexels-photo-15556727/free-photo-of-green-papaya-fruits-hanging-on-tree.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+#     'orange': ' https://images.pexels.com/photos/2171374/pexels-photo-2171374.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+#     'apple': ' https://images.pexels.com/photos/2821819/pexels-photo-2821819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+#     'muskmelon': 'https://images.pexels.com/photos/28454829/pexels-photo-28454829/free-photo-of-pile-of-fresh-striped-melons-at-market.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+#     'watermelon': 'https://images.pexels.com/photos/12746880/pexels-photo-12746880.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+#     'grapes': 'https://images.pexels.com/photos/225229/pexels-photo-225229.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+#     'mango': 'https://images.pexels.com/photos/16003687/pexels-photo-16003687/free-photo-of-fruit-on-tree.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+#     'banana': 'https://images.pexels.com/photos/6141487/pexels-photo-6141487.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+#     'pomegranate': 'https://images.pexels.com/photos/5320089/pexels-photo-5320089.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+#     'lentil': 'https://cdn.britannica.com/14/157214-050-3A82D9CD/kinds-lentils.jpg',
+#     'blackgram': 'https://agribee.in/wp-content/uploads/2020/01/blackgram.jpg',
+#     'mungbean': 'https://images.pexels.com/photos/7334141/pexels-photo-7334141.jpeg?auto=compress&cs=tinysrgb&w=600',
+#     'mothbeans': 'https://ooofarms.com/cdn/shop/products/MothBean1_whole.jpg?v=1672251298&width=3840',
+#     'pigeonpeas': 'https://gardenerspath.com/wp-content/uploads/2022/02/How-to-Grow-Pigeon-Peas-Feature.jpg',
+#     'kidneybeans': 'https://images-prod.healthline.com/hlcmsresource/images/AN_images/kidney-beans-1296x728-feature.jpg',
+#     'chickpea': 'https://img.feedstrategy.com/files/base/wattglobalmedia/all/image/2023/10/chickpeas.652d6f3ea08b0.png?auto=format%2Ccompress&q=70&w=880',
+#     'coffee': 'https://images.pexels.com/photos/2131720/pexels-photo-2131720.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+# }
 
 @app.route('/')
 def index():
@@ -278,6 +278,7 @@ def quote():
 def help():
     return render_template("help.html")
 
+# Prediction
 @app.route("/predict", methods=['POST'])
 def predict():
     N = float(request.form['Nitrogen'])
@@ -292,9 +293,11 @@ def predict():
     prediction = model.predict([feature_list])
     result = prediction[0]
     
-    image_url = crop_images.get(result, 'https://via.placeholder.com/300?text=No+Image+Available')
+    crop_data = mongo.db.crop_images.find_one({"crop_name": result})
+    image_url = crop_data["image_url"] if crop_data else "https://via.placeholder.com/300?text=No+Image+Available"
 
     return render_template('crop.html', result=result, image_url=image_url)
+
 
 @app.route("/news", methods=['GET'])
 def news():
